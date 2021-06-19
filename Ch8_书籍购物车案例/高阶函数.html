@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const nums = [10, 20, 111, 222, 444, 40, 50];
+        // filter/map/reduce 
+        // filter中的回调函数有一个要求，必须返回布尔值
+        // true:当返回true时，函数内部会振动将这次回调的n加入到新的数组中
+        // false:当返回false时，函数内部会过滤掉这次的n
+
+        // 1.filter函数的使用
+        let newNums = nums.filter(function (n) {
+            return n < 100;
+        });
+        console.log(newNums);
+
+        // 2.map函数的使用
+        let new2Nums = newNums.map(function (n) {
+            return n * 2;
+        })
+        console.log(new2Nums);
+
+        // 3.reduce函数的使用
+        // reduce作用对数组所有内容进行汇总
+        let total = new2Nums.reduce(function (preValue, n) {
+            return preValue + n;
+        }, 0)
+        console.log(total);
+    </script>
+</body>
+
+</html>

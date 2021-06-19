@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 2.checkbox多选框 -->
+        <label v-for='item in originHobbies' :for="item">
+            <input type="checkbox" :id="item" :value="item" v-model='hobbies'>{{item}}
+        </label>
+        <h2>你的爱好是:{{hobbies}}</h2>
+    </div>
+    <script src="../js//vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                hobbies: [],// 多选框
+                originHobbies: ['篮球', '足球', '乒乓球', '羽毛球', '台球', '高尔夫球'],
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn @itemclick='cpnClick'></cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <ul>
+                <li v-for='item in categories' @click='btnClick(item)'>
+                    <button>{{item.name}}</button>
+                </li>
+            </ul>
+        </div>
+    </template>
+
+    <script src="../js//vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                movies: ['海王', '海贼王', '战狼', '奥特曼']
+            },
+            methods: {
+                cpnClick(item) {
+                    console.log('cpnclick', item);
+                }
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data() {
+                        return {
+                            categories: [
+                                { id: 1, name: '热门推荐' },
+                                { id: 2, name: '手机数码' },
+                                { id: 3, name: '家用家电' },
+                                { id: 4, name: '电脑办公' },
+                            ]
+                        }
+                    },
+                    methods: {
+                        btnClick(item) {
+                            // 发射  自定义事件
+                            // $emit('事件的名字',参数)
+                            this.$emit('itemclick', item.name)
+                        }
+                    },
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

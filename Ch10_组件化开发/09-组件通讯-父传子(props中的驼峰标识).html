@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-bind 绑定 不支持 驼峰命名法 所以要 - 来解决问题 -->
+        <cpn :cmovies='movies' :c-message='message'></cpn>
+        <!-- <cpn></cpn> -->
+    </div>
+    <template id="cpn">
+        <div>
+            <ul>
+                <li v-for='item in cmovies'>{{item}}</li>
+            </ul>
+            <h2>{{cMessage}}</h2>
+        </div>
+    </template>
+    <script src="../js//vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                movies: ['海王', '海贼王', '战狼', '奥特曼']
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    // 1.数组传递
+                    // props: ['cmovies', 'cmessage']
+                    // 2.对象传递
+                    // (1)可以类型限制
+                    // props: {
+                    //     cmovies: Array,
+                    //     cmessage: String,
+                    // }
+                    // (2)可以提供一些默认值
+                    props: {
+                        cmovies: {
+                            type: Array,
+                            default() {
+                                return ['a']
+                            },
+                            required: true,
+                        },
+                        cMessage: {
+                            type: String,
+                            default: 'aaaa',//默认值
+                            required: true,//必须传递，不传递报错
+                        },
+                    }
+
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

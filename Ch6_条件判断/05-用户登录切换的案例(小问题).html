@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Vue出于性能优化，会让用户账户和邮箱账户共用了一个input和label -->
+    <!-- 为了避免他们共用，加 key 标识他们是唯一的 Key的名字要不同，如果相同就表示是共用的 -->
+    <div id="app">
+        <span v-if='isUser'>
+            <label for="username">用户账户</label>
+            <input type="text" id="username" placeholder="用户账户" key='username'>
+        </span>
+        <span v-else>
+            <label for="userEmail">用户邮箱</label>
+            <input type="text" id="userEmail" placeholder="用户邮箱" key='userEmail'>
+        </span>
+        <button @click='isUser = !isUser'>切换类型</button>
+    </div>
+    <script src="../js//vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isUser: true
+            }
+        })
+    </script>
+</body>
+
+</html>

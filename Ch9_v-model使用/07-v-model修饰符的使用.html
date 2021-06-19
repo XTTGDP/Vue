@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 1.修饰符:lazy  -->
+        <!-- 让数据在失去焦点或者回车后再同步到后台数据,提高效率 -->
+        <input type="text" v-model.lazy='message'>
+        <h2>{{message}}</h2>
+
+        <!-- 2.修饰符number -->
+        <!-- 默认情况下,输入的字母还是数字,都会当成字符串处理 -->
+        <!-- 当我们希望处理的数字类型,可以使用number将输入内容转换为数字类型 -->
+        <input type="number" v-model.number='age'>
+        <h2>{{age}}-{{typeof age}}</h2>
+
+        <!-- 3.修饰符 trim  -->
+        <!-- 如果输入的内容首尾有很多空格,我们希望去除 -->
+        <!-- trim修饰符可以过滤掉左右空格 -->
+        <input type="text" v-model.trim='name'>
+        <h2>{{name}}</h2>
+
+    </div>
+    <script src="../js//vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '你好啊',
+                age: 0,
+                name: ''
+            }
+        })
+    </script>
+</body>
+
+</html>
